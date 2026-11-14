@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Guia rápido para criar um repositório no GitHub e subir um projeto pelo terminal.">
+  <meta name="theme-color" content="#080c16">
+  <title>Do terminal ao GitHub | Guia rápido</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="page">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="#conteudo">
+          <span class="brand-icon" aria-hidden="true">&gt;_</span>
+          Guia Git
+        </a>
+        <nav aria-label="Nesta página">
+          <a href="#passo-a-passo">Passo a passo</a>
+          <a href="#opcoes">Opções do comando</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo" class="container">
+      <section class="hero" aria-labelledby="titulo">
+        <div class="intro">
+          <p class="kicker"><span aria-hidden="true"></span> Git &amp; GitHub CLI</p>
+          <h1 id="titulo">Do terminal<br>ao <em>GitHub.</em></h1>
+          <p class="intro-copy">Crie um repositório e suba os arquivos do seu projeto pelo terminal da IDE.</p>
+          <a class="jump-link" href="#passo-a-passo">Ver passo a passo <span aria-hidden="true">↓</span></a>
+        </div>
+
+        <section class="builder" aria-labelledby="builder-title">
+          <div class="window-bar">
+            <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>Terminal</span>
+          </div>
+          <div class="builder-body">
+            <h2 id="builder-title">Crie seu repositório</h2>
+            <form id="options">
+              <div class="settings">
+                <fieldset>
+                  <legend>Visibilidade</legend>
+                  <div class="segments">
+                    <label><input type="radio" name="visibility" value="public" checked><span>public</span></label>
+                    <label><input type="radio" name="visibility" value="private"><span>private</span></label>
+                  </div>
+                </fieldset>
+                <fieldset>
+                  <legend>Nome do remoto</legend>
+                  <div class="segments">
+                    <label><input type="radio" name="remote" value="origin" checked><span>origin</span></label>
+                    <label><input type="radio" name="remote" value="github"><span>github</span></label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="command-block" aria-label="Comando para criar o repositório">
+                <span class="prompt" aria-hidden="true">&gt;</span>
+                <pre><code id="create-command">gh repo create pixel-rain --public --source=. --remote=origin --push</code></pre>
+              </div>
+              <div class="builder-actions">
+                <button class="copy-button" type="submit">
+                  <span class="copy-icon" aria-hidden="true"></span>
+                  Copiar comando
+                </button>
+                <span id="command-status" class="copy-status" role="status"></span>
+              </div>
+            </form>
+          </div>
+        </section>
+      </section>
+
+      <section id="passo-a-passo" class="content-section" aria-labelledby="steps-title">
+        <header class="section-heading">
+          <h2 id="steps-title">Passo a passo</h2>
+          <p>Rode os comandos na pasta do projeto.</p>
+        </header>
+        <ol class="steps">
+          <li class="card step">
+            <span class="step-number" aria-hidden="true">01</span>
+            <h3>Conecte sua conta</h3>
+            <dl>
+              <dt><code>gh auth status</code></dt>
+              <dd>Mostra qual conta está conectada no terminal.</dd>
+              <dt><code>gh auth login</code></dt>
+              <dd>Conecta sua conta, caso o terminal peça login.</dd>
+            </dl>
+          </li>
+          <li class="card step">
+            <span class="step-number" aria-hidden="true">02</span>
+            <h3>Faça o commit</h3>
+            <dl>
+              <dt><code>git status</code></dt>
+              <dd>Mostra o estado dos arquivos. Se a pasta ainda estiver sem Git, rode <code>git init -b main</code> para começar na branch <code>main</code>.</dd>
+              <dt><code>git add .</code></dt>
+              <dd>Prepara as mudanças para o commit. Confira a lista com <code>git status --short</code>. Use o <code>.gitignore</code> para excluir arquivos locais, como <code>.env</code>.</dd>
+              <dt><code>git commit -m "Commit inicial"</code></dt>
+              <dd>Registra as mudanças preparadas em um commit local.</dd>
+            </dl>
+          </li>
+          <li class="card step">
+            <span class="step-number" aria-hidden="true">03</span>
+            <h3>Envie ao GitHub</h3>
+            <dl>
+              <dt><code>git remote -v</code></dt>
+              <dd>Lista os apelidos e as URLs dos remotos já configurados.</dd>
+              <dt><code>gh repo create …</code></dt>
+              <dd>Cria o repositório e envia os commits com <code>--push</code>. Troque <code>pixel-rain</code> pelo nome do seu projeto.</dd>
+            </dl>
+            <a class="card-link" href="#builder-title">Voltar ao comando <span aria-hidden="true">↑</span></a>
+          </li>
+        </ol>
+      </section>
+
+      <section id="opcoes" class="content-section options-section" aria-labelledby="options-title">
+        <header class="section-heading">
+          <h2 id="options-title">O que muda no comando</h2>
+        </header>
+        <div class="explanations">
+          <article class="card details-card">
+            <h3>Quem consegue ver o repo?</h3>
+            <dl>
+              <dt><code>--public</code></dt>
+              <dd>Qualquer pessoa pode ver o repositório.</dd>
+              <dt><code>--private</code></dt>
+              <dd>Só quem tem permissão pode acessar.</dd>
+            </dl>
+          </article>
+          <article class="card details-card">
+            <h3>Qual nome usar para o remoto?</h3>
+            <p>Um remoto é um endereço Git salvo com um apelido local.</p>
+            <dl>
+              <dt><code>--remote=origin</code></dt>
+              <dd><code>origin</code> é o nome mais comum para o remoto principal.</dd>
+              <dt><code>--remote=github</code></dt>
+              <dd>Use <code>github</code> se quiser manter o <code>origin</code> existente e esse novo apelido estiver livre.</dd>
+            </dl>
+          </article>
+        </div>
+        <dl class="flags-note">
+          <div>
+            <dt><code>--source=.</code></dt>
+            <dd>Usa o repositório Git da pasta atual.</dd>
+          </div>
+          <div>
+            <dt><code>--push</code></dt>
+            <dd>Envia os commits da branch atual ao GitHub.</dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="footer container">
+      <a href="https://cli.github.com/manual/gh_repo_create">Manual do GitHub CLI <span aria-hidden="true">↗</span></a>
+      <a href="#conteudo">Voltar ao topo <span aria-hidden="true">↑</span></a>
+    </footer>
+  </div>
+</body>
+</html>
