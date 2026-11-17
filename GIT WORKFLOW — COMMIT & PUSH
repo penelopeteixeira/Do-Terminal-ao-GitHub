@@ -1,0 +1,51 @@
+Analise as alterações do repositório local e execute o processo de versionamento Git para sincronizá-las com o repositório remoto no GitHub.
+
+### ETAPAS
+
+1. Verifique se o diretório atual é um repositório Git válido.
+2. Identifique a branch atual, o repositório remoto e seu respectivo upstream.
+3. Execute `git status` e analise `git diff` para identificar todas as alterações.
+4. Identifique os arquivos relacionados à implementação e exclua arquivos temporários, credenciais, segredos e alterações não relacionadas.
+5. Determine o tipo de commit adequado conforme o Conventional Commits.
+6. Faça stage somente dos arquivos pertinentes.
+7. Revise o conteúdo staged com `git diff --cached`.
+8. Verifique se existem testes ou validações relevantes e execute-os quando apropriado.
+9. Crie o commit com uma mensagem no padrão:
+
+`type(scope): objective description`
+
+`<body opcional em inglês: o que mudou e por quê>`
+
+10. Faça push para a branch correspondente no repositório remoto.
+
+### REGRAS OBRIGATÓRIAS
+
+- Seguir rigorosamente o padrão Conventional Commits.
+- Escrever subject e body do commit em inglês; manter o relatório final em português.
+- Utilizar mensagens curtas, claras e descritivas.
+- Nunca utilizar `git add .` indiscriminadamente.
+- Nunca incluir arquivos com credenciais, tokens ou informações sensíveis.
+- Não sobrescrever alterações existentes.
+- Não executar `reset --hard`, `clean`, force push ou operações destrutivas.
+- Não alterar configurações globais do Git.
+- Se faltar `user.name`, `user.email` ou autenticação, informar e solicitar minha orientação.
+- Se houver problemas no índice `.git/index`, inconsistências no repositório ou conflitos, interromper e diagnosticar antes de continuar.
+- Se houver alterações não relacionadas, commits divergentes ou dúvidas sobre os arquivos, interromper e solicitar confirmação.
+- Não fazer push direto na `main` ou `master` em projetos colaborativos sem confirmar se essa prática é permitida.
+- Não inventar resultados de testes ou afirmar que o push foi concluído sem verificar o resultado.
+
+### RELATÓRIO FINAL
+
+Ao concluir, apresente em português:
+
+1. Arquivos alterados.
+2. Resumo das alterações.
+3. Tipo de commit utilizado.
+4. Mensagem completa do commit (subject e body, em inglês).
+5. Hash do commit.
+6. Branch de destino.
+7. Resultado do push.
+8. Situação final do repositório local.
+9. Notes (EN) — resumo objetivo das mudanças em inglês (2–4 linhas).
+
+Execute as etapas de forma autônoma quando estiverem claras e seguras. Solicite minha autorização quando encontrar alguma situação que exija decisão.
